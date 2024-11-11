@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link href="styles.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Roadrunner23 Portfolio</title>
     </head>
     <body>
-        <h1>Hello Scottie Moyer. I know where you live.</h1>
+        <div class="header1">
+            <h1>Andrea De Santis</h1>
+            <h1 id="headershadow">Andrea De Santis</h1>
+        </div>
+        <div class="description"> 
+            <p>Hi, welcome to my website! On Github, I go by the username Roadrunner23. 
+                Below you can find personal projects I have worked on in the past,
+                prior experience, and my contact information.
+            </p>
+        </div>
+        <div class="accordion header2" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Projects
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="content accordion-body">
+                        <div style="grid-column: 1; grid-row: 1;">
+                            <h3 style="background-color:green;">A</h3>
+                        </div>
+                        <div style="grid-column: 0; grid-row: 1;">
+                            <h3 style="background-color:orange;">B</h3>
+                        </div>
+                        <div style="grid-column: 1; grid-row: 0;">
+                            <h3 style="background-color:cornflowerblue;">C</h3>
+                        </div>
+                        <div style="grid-column: 0; grid-row: 0;">
+                            <h3 style="background-color:indianred;">D</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
