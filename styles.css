@@ -27,7 +27,7 @@ h1 {
 h2 {
     font-size: 80px;
     font-family: "Times New Roman", Times, serif;
-    text-shadow: 3px 3px 3px rgb(32, 16, 47);
+    padding:30px;
 }
 
 h3 {
@@ -38,7 +38,7 @@ h3 {
 
 #headershadow {
     background:none;
-    text-shadow: 4px 4px 3px rgb(59, 6, 17);
+    text-shadow: 5px 5px 3px rgb(59, 6, 17);
     z-index: 0;
 }
 
@@ -47,13 +47,17 @@ p {
     font-family: 'Courier New', Courier, monospace;
     text-shadow: 0.5px 0.5px rgba(255, 255, 255, 0.659);
     font-weight: bold;
+    padding:30px;
+
 }
 
 .header1 {
     background-color:crimson;
     text-align: center;
     height: max-content;
-    padding:5px;
+    padding:50px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin:5px;
     display:grid;
     outline: 5px solid black;
@@ -61,12 +65,30 @@ p {
 }
 
 .header2 {
-    background-color:rebeccapurple;
+    background-color:blueviolet;
     text-align: center;
     height: max-content;
     margin:5px;
     outline: 5px solid black;
-    border: 10px double rgb(49, 25, 73);
+    border: 10px double rgb(64, 21, 104);
+}
+
+.header3 {
+    background-color: lightgreen;
+    text-align: center;
+    height: max-content;
+    margin:5px;
+    outline: 5px solid black;
+    border: 10px double rgb(73, 119, 73);
+}
+
+.header4 {
+    background-color:lightgoldenrodyellow;
+    text-align: center;
+    height: max-content;
+    margin:5px;
+    outline: 5px solid black;
+    border: 10px double rgb(112, 112, 83);
 }
 
 .description {
@@ -75,19 +97,31 @@ p {
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 5px;
-    padding:5px;
-    padding-left: 10px;
-    padding-right: 10px;
     outline: 5px solid black;
     border: 10px double rgb(42, 69, 70);
+    padding-top:15px;
 }
 
 .content {
-    display:grid;
-    background-color: rgb(49, 25, 73);
+    display:grid;;
     border:none;
     margin:0px;
     padding-bottom:5px;
+}
+
+.info {
+    row-gap: 0px;
+    column-gap: 0px;
+    padding:0px;
+}
+
+.card {
+    width:100%;
+    padding:0px;
+}
+
+button {
+    width:100%;
 }
 
 .accordion-button {
