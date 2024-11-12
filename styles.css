@@ -1,3 +1,7 @@
+* {
+    color:black;
+}
+
 html {
     overflow: hidden;
     height: 100%;
@@ -65,7 +69,7 @@ p {
 }
 
 .header2 {
-    background-color:blueviolet;
+    background-color:rgb(183, 107, 255);
     text-align: center;
     height: max-content;
     margin:5px;
@@ -107,6 +111,7 @@ p {
     border:none;
     margin:0px;
     padding-bottom:5px;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .info {
@@ -118,36 +123,71 @@ p {
 .card {
     width:100%;
     padding:0px;
+    border-radius: 0px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px, solid, black;
+    border-top:none;
 }
 
 button {
     width:100%;
+    border-radius: 20px;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+  
+.radiusout {
+    animation-name: radiusout;
+}
+  
+.radiusin {
+    animation-name: radiusin;
+}
+  
+@keyframes radiusout {
+    0% {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    100% {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+}
+  
+@keyframes radiusin {
+    0% {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    100% {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
 }
 
-.accordion-button {
-    font-size: 80px;
-    font-family: "Times New Roman", Times, serif;
-    text-shadow: 3px 3px 3px rgb(32, 16, 47);
-    width: 100%;
-    background-color: rebeccapurple !important; /* Change the button background as well */
-    color:black;
+
+.card > p {
+    color:rgba(255, 255, 255, 0.70);
+    font-size: 20px;
+    font-weight: bolder;
+    text-shadow:none;
+    padding:10px;
 }
 
-.accordion-button:focus {
-    box-shadow: none; /* Removes the blue outline when focused */
-    color: black;
+.content {
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+    background-image: linear-gradient(to top, rebeccapurple, rgb(183, 107, 255));
 }
 
-.accordion {
-    background-color: rebeccapurple !important; /* Force background color */
+.columnleft, .columnright {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
-
-.accordion-item {
-    background-color: black !important; /* Ensure the items are also rebeccapurple */
-}
-
-.accordion-button:not(.collapsed) {
-    color: black !important;
-}
-
 
