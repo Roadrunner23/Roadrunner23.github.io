@@ -185,9 +185,42 @@ button {
     background-image: linear-gradient(to top, rebeccapurple, rgb(183, 107, 255));
 }
 
+
 .columnleft, .columnright {
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+img {
+    max-width:95%;
+    height:auto;
+    border-radius: 20px;
+    margin:2.5%;
+}
+
+a {
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: dodgerblue!important;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.659),
+                -1px -1px gray;
+    font-weight: bold;
+    margin-bottom:10px;
+    text-decoration: none;
+}
+
+a:active {
+    color: rgb(27, 127, 227)!important;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.659),
+                  1px 1px gray;
+}
+
+#return {
+    font-size:50px;
+    background-color: rgb(42, 69, 70);
+    margin:10px;
+    margin-top:0px;
+    border-radius: 5px;
 }
 
