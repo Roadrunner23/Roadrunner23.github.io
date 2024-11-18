@@ -52,7 +52,7 @@ p {
     text-shadow: 0.5px 0.5px rgba(255, 255, 255, 0.659);
     font-weight: bold;
     padding:30px;
-
+    margin-bottom:5px;
 }
 
 .header1 {
@@ -107,10 +107,9 @@ p {
 }
 
 .content {
-    display:grid;;
+    display:grid;
     border:none;
     margin:0px;
-    padding-bottom:5px;
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -172,10 +171,10 @@ button {
 
 .card > p {
     color:rgba(255, 255, 255, 0.70);
-    font-size: 20px;
     font-weight: bolder;
     text-shadow:none;
     padding:10px;
+    text-shadow: 3px 3px 3px black;
 }
 
 .content {
@@ -194,9 +193,11 @@ button {
 
 img {
     max-width:95%;
-    height:auto;
     border-radius: 20px;
     margin:2.5%;
+    background-color: black;
+    border: 5px solid black;
+    object-fit: contain;
 }
 
 a {
@@ -218,9 +219,94 @@ a:active {
 
 #return {
     font-size:50px;
-    background-color: rgb(42, 69, 70);
     margin:10px;
     margin-top:0px;
     border-radius: 5px;
 }
 
+.projectdescription {
+    display:none;
+}
+
+#contact {
+    display:grid;
+}
+
+#specialtext {
+    color:rgba(255, 255, 255); 
+    text-shadow: 3px 3px 3px black;
+    padding:10px;
+    margin-top:10px;
+}
+
+
+@media (max-width: 700px) {
+    h2 {
+        font-size: 50px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    a {
+        font-size: 15px;
+    }
+
+    #return {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .header1 {
+        padding:10px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin:0px;
+        padding-bottom:0px;
+    }
+
+    #projectname {
+        margin:0px;
+        padding:5px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .columnleft, .columnright {
+        width: 100%;
+    }
+
+    #contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .info {
+        width: 100%; /* Ensure the columns take full width in stacked layout */
+    }
+}

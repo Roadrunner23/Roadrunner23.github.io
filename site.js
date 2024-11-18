@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const desc = document.querySelector('.description');
         desc.firstElementChild.style.display = 'block';
 
+        desc.style.backgroundColor = 'cadetblue';
+        desc.style.border = '10px double rgb(42, 69, 70)';
+
         goBack.style.display = 'none';
 
         mainpage.style.display = 'inline';
@@ -31,6 +34,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = a.parentElement;
             const button = a.parentElement.parentElement.parentElement.firstElementChild;
 
+            const projectTitle = projectpage.firstElementChild;
+            const projectBody = projectpage.lastElementChild;
+
+            projectTitle.style.backgroundColor = button.style.backgroundColor;
+            projectBody.style.backgroundColor = card.style.backgroundColor;
+
+            projectTitle.firstElementChild.innerHTML = button.firstElementChild.innerHTML;
+
+            if (card.parentElement.id != 'project0') { 
+                projectBody.querySelector('img').src = card.querySelector('img').src;
+                if (projectBody.firstElementChild.nodeName.toLowerCase() != 'img') {
+                    projectBody.querySelector('img').style.display = 'inline';
+                    document.querySelector('#specialtext').remove();
+                }
+            } else if (projectBody.firstElementChild.nodeName.toLowerCase() == 'img') {
+                const specialtext = document.createElement('h3');
+                specialtext.innerHTML = "No need for a GIF, you're looking at it!";
+                specialtext.setAttribute('id', 'specialtext');
+                projectBody.insertBefore(specialtext, projectBody.firstChild);
+                projectBody.querySelector('img').style.display = 'none';
+            }
+
+            projectBody.querySelector('p').innerHTML = card.querySelector('.projectdescription').innerHTML;
+
             PageSetup(button, card);
         })
     })
@@ -42,6 +69,9 @@ function PageSetup(button, card) {
 
     const desc = document.querySelector('.description');
     desc.firstElementChild.style.display = 'none';
+
+    desc.style.backgroundColor = 'rgb(50,50,50)';
+    desc.style.border = '10px double dodgerblue';
 
     const goBack = document.querySelector('#return');
     goBack.style.display = 'block';
@@ -60,7 +90,7 @@ function ProjectAnimationSetup() {
                 button.classList.remove('radiusout');
                 button.classList.add('radiusin');
             } else {
-                button.style.animationDuration = '1s';
+                button.style.animationDuration = '2s';
                 button.classList.remove('radiusin');
                 button.classList.add('radiusout');
             }
