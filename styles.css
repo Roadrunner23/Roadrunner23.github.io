@@ -200,6 +200,32 @@ img {
     object-fit: contain;
 }
 
+video {
+    max-width:95%;
+    max-height:700px;
+    border-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin:2.5%;
+    background-color: black;
+    border: 5px solid black;
+    object-fit: contain;
+    margin-bottom:0px;
+}
+
+.pause, .reset {
+    margin:0px;
+    padding:0px;
+    position:relative;
+    top:-5px;
+    border-radius: 0px;
+}
+
+.reset {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 a {
     font-size: 25px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -281,10 +307,6 @@ a:active {
     #projectname {
         margin:0px;
         padding:5px;
-    }
-
-    h3 {
-        font-size: 20px;
     }
 
     p {

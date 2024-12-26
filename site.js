@@ -43,17 +43,17 @@ document.addEventListener('DOMContentLoaded', function() {
             projectTitle.firstElementChild.innerHTML = button.firstElementChild.innerHTML;
 
             if (card.parentElement.id != 'project0') { 
-                projectBody.querySelector('img').src = card.querySelector('img').src;
-                if (projectBody.firstElementChild.nodeName.toLowerCase() != 'img') {
-                    projectBody.querySelector('img').style.display = 'inline';
+                projectBody.querySelector('video').src = card.querySelector('video').src.split('/').at(-1);
+                if (projectBody.firstElementChild.nodeName.toLowerCase() != 'video') {
+                    projectBody.querySelector('video').style.display = 'inline';
                     document.querySelector('#specialtext').remove();
                 }
-            } else if (projectBody.firstElementChild.nodeName.toLowerCase() == 'img') {
+            } else if (projectBody.firstElementChild.nodeName.toLowerCase() == 'video') {
                 const specialtext = document.createElement('h3');
-                specialtext.innerHTML = "No need for a GIF, you're looking at it!";
+                specialtext.innerHTML = "You're lookin' at it!";
                 specialtext.setAttribute('id', 'specialtext');
                 projectBody.insertBefore(specialtext, projectBody.firstChild);
-                projectBody.querySelector('img').style.display = 'none';
+                projectBody.querySelector('video').style.display = 'none';
             }
 
             projectBody.querySelector('p').innerHTML = card.querySelector('.projectdescription').innerHTML;
@@ -84,16 +84,21 @@ function PageSetup(button, card) {
 
 function ProjectAnimationSetup() {
     document.querySelectorAll('button').forEach((button) => {
-        button.addEventListener('click', () => {
-            if (button.getAttribute('aria-expanded') == 'true') {
-                button.style.animationDuration = '0.01s';
-                button.classList.remove('radiusout');
-                button.classList.add('radiusin');
-            } else {
-                button.style.animationDuration = '2s';
-                button.classList.remove('radiusin');
-                button.classList.add('radiusout');
-            }
-        })
+        if (button.className != 'pause' && button.className != 'reset') {
+            button.addEventListener('click', () => {
+                if (button.getAttribute('aria-expanded') == 'true') {
+                    button.style.animationDuration = '0.01s';
+                    button.classList.remove('radiusout');
+                    button.classList.add('radiusin');
+                } else {
+                    button.style.animationDuration = '2s';
+                    button.classList.remove('radiusin');
+                    button.classList.add('radiusout');
+                }
+            })
+        } else {
+            // Not an animation setup but it saves work and loading time to put this setup here.
+            console.log(button.parentElement.firstElementChild.width)
+        }
     })
 }
