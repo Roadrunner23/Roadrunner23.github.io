@@ -97,8 +97,21 @@ function ProjectAnimationSetup() {
                 }
             })
         } else {
-            // Not an animation setup but it saves work and loading time to put this setup here.
-            console.log(button.parentElement.firstElementChild.width)
+            if (button.className == 'pause') {
+                const video = button.parentElement.querySelector('video');
+                button.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                })
+            } else {
+                const video = button.parentElement.querySelector('video');
+                button.addEventListener('click', () => {
+                    video.currentTime = 0;
+                })
+            }
         }
     })
 }
