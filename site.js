@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         goBack.style.display = 'none';
 
+        document.querySelectorAll('.collapse').forEach((card) => {
+            collapseButton = card.parentElement.firstElementChild;
+            if (collapseButton.getAttribute('aria-expanded') == 'true') {
+                collapseButton.click()
+            }
+        })
+
         mainpage.style.display = 'inline';
         projectpage.style.display = 'none';
     })
@@ -43,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             projectTitle.firstElementChild.innerHTML = button.firstElementChild.innerHTML;
 
             if (card.parentElement.id != 'project0') { 
-                projectBody.querySelector('video').src = card.querySelector('video').src.split('/').at(-1);
+                projectBody.querySelector('video').src = `videos/${card.querySelector('video').src.split('/').at(-1)}`;
                 if (projectBody.firstElementChild.nodeName.toLowerCase() != 'video') {
                     projectBody.querySelector('video').style.display = 'inline';
                     document.querySelector('#specialtext').remove();

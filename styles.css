@@ -19,7 +19,7 @@ body {
 h1 {
     font-size: 100px;
     font-family: "Times New Roman", Times, serif;
-    background: linear-gradient(to right, yellow, blue);
+    background: linear-gradient(to right, rgb(255, 255, 0), rgb(72, 72, 255));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -49,7 +49,7 @@ h3 {
 p {
     font-size: 25px;
     font-family: 'Courier New', Courier, monospace;
-    text-shadow: 0.5px 0.5px rgba(255, 255, 255, 0.659);
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.659);
     font-weight: bold;
     padding:30px;
     margin-bottom:5px;
@@ -168,7 +168,6 @@ button {
     }
 }
 
-
 .card > p {
     color:rgba(255, 255, 255, 0.70);
     font-weight: bolder;
@@ -214,6 +213,11 @@ video {
     user-select: none;
 }
 
+.header2 > video {
+    border-radius: 20px;
+    margin:0;
+}
+
 .pause, .reset {
     max-width:95%;
     margin-left:2.5%;
@@ -222,16 +226,28 @@ video {
     position:relative;
     top:-6px;
     border-radius: 0px;
+    text-shadow: 1px 0px 1px rgba(255, 255, 255),
+                 0px 1px 1px rgba(255, 255, 255),
+                 -1px 0px 1px rgba(255, 255, 255),
+                 0px -1px 1px rgba(255, 255, 255);
 }
 
 .pause {
     background: linear-gradient(to bottom, rgb(110, 110, 110), rgb(150, 150, 150));
 }
 
+.pause:active {
+    background: linear-gradient(to bottom, rgb(80, 80, 80), rgb(120, 120, 120));
+}
+
 .reset {
     background: linear-gradient(to bottom, rgb(150, 150, 150), rgb(190, 190, 190));
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.reset:active {
+    background: linear-gradient(to bottom, rgb(100, 100, 100), rgb(140, 140, 140));
 }
 
 a {
@@ -274,7 +290,25 @@ a:active {
 }
 
 
-@media (max-width: 700px) {
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(190, 190, 190);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(110, 110, 110);
+  }
+
+
+@media (max-width: 732px) {
     h2 {
         font-size: 50px;
     }
@@ -337,6 +371,10 @@ a:active {
     }
 
     .info {
-        width: 100%; /* Ensure the columns take full width in stacked layout */
+        width: 100%;
+    }
+
+    #headershadow {
+        text-shadow: 3px 3px 3px rgb(59, 6, 17);
     }
 }
