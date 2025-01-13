@@ -17,12 +17,15 @@
             <h1 id="headershadow">Andrea DeSantis</h1>
         </div>
 
-        <div id="projectpage">
+        <div id="projectpage" style="display:none;">
             <div class="header2" style="border-color:black;">
                 <h2 id="projectname"></h2>
             </div>
-            <div class="header2" style="border-color:black;">
-                <video type="video/mp4" autoplay muted loop></video>
+            <div class="header2 vidholder" style="border-color:black;">
+                <video type="video/mp4" playsinline autoplay muted loop preload="auto"></video>
+                <img src="images/GeordiLaForge.jpg" alt="Low Quality Placeholder">
+                <button class="pause">Pause</button>
+                <button class="reset">Reset</button>
                 <p style="color:rgba(255, 255, 255); text-shadow: 3px 3px 3px black"></p>
             </div>
         </div>
@@ -52,8 +55,9 @@
                             </button>
                             <div class="collapse" id="project1">
                                 <div class="card card-body" style="background-color:rgb(0, 88, 0);">
-                                    <div>
-                                        <video src="videos/KeyterpreterCopy.mp4" type="video/mp4" playsinline autoplay muted loop></video>
+                                    <div class="vidholder">
+                                        <img src="images/GeordiLaForge.jpg" alt="Low Quality Placeholder">
+                                        <video src="videos/KeyterpreterCopy.mp4" type="video/mp4" playsinline autoplay muted loop preload="auto"></video>
                                         <button class="pause">Pause</button>
                                         <button class="reset">Reset</button>
                                     </div>
@@ -74,7 +78,7 @@
                             <div class="collapse" id="project3">
                                 <div class="card card-body" style="background-color:rgb(38, 69, 126);">
                                     <div>
-                                        <img src="GeordiLaForge.jpg" alt="Website Img">
+                                        <img src="images/GeordiLaForge.jpg" alt="Website Img">
                                         <button class="pause">Pause</button>
                                         <button class="reset">Reset</button>
                                     </div>
@@ -118,7 +122,7 @@
                             <div class="collapse" id="project4">
                                 <div class="card card-body" style="background-color:rgb(119, 37, 37);">
                                     <div>
-                                        <img src="picard.jpg" alt="Website Img">
+                                        <img src="images/picard.jpg" alt="Website Img">
                                         <button class="pause">Pause</button>
                                         <button class="reset">Reset</button>
                                     </div>

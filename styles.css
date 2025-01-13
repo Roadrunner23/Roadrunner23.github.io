@@ -197,6 +197,7 @@ img {
     background-color: black;
     border: 5px solid black;
     object-fit: contain;
+    opacity: 1;
 }
 
 video {
@@ -211,11 +212,6 @@ video {
     object-fit: contain;
     margin-bottom:0px;
     user-select: none;
-}
-
-.header2 > video {
-    border-radius: 20px;
-    margin:0;
 }
 
 .pause, .reset {

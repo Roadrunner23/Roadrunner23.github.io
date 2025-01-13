@@ -3,7 +3,27 @@ document.addEventListener('DOMContentLoaded', function() {
     window.mainpage = document.querySelector('#mainpage');
 
     window.projectpage = document.querySelector('#projectpage');
-    projectpage.style.display = 'none';
+
+    // Sets up the images and videos to dynamically load depending on device power
+    document.querySelectorAll('.vidholder').forEach((holder) => {
+        const img = holder.querySelector('img');
+        const video = holder.querySelector('video');
+        const buttons = holder.querySelectorAll('button');
+
+        video.style.display = 'none';
+        buttons.forEach(b => b.style.display = 'none');
+
+        video.onloadeddata = () => {
+            img.style.display = 'none';
+            video.style.display = 'initial';
+            buttons.forEach(b => {
+                b.style.display = 'initial';
+                if (projectpage.style.display == 'inline') {
+                    b.style.width = `${video.offsetWidth}px`;
+                }
+            });
+        };
+    })
 
     // Sets up the return anchor
     const goBack = document.querySelector('#return');
@@ -71,6 +91,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function PageSetup(button, card) {
+    // Deloads anything that might make it look buggy to start the lazy loading process
+    projectpage.querySelector('video').style.display = 'none';
+    projectpage.querySelectorAll('button').forEach(b => b.style.display = 'none');
+    projectpage.querySelector('img').style.display = 'initial';
+
+    // Replaces the main page with the specified project
     mainpage.style.display = 'none';
     projectpage.style.display = 'inline';
 
