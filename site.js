@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.projectpage = document.querySelector('#projectpage');
 
+    window.onresize = () => {
+        if (projectpage.style.display == 'inline') {
+            const video = projectpage.querySelector('video');
+            const buttons = projectpage.querySelectorAll('button');
+            buttons.forEach(b => {;
+                b.style.width = `${video.offsetWidth}px`;
+            });
+        }
+    }
+
     // Sets up the images and videos to dynamically load depending on device power
     document.querySelectorAll('.vidholder').forEach((holder) => {
         const img = holder.querySelector('img');
@@ -69,10 +79,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             projectTitle.firstElementChild.innerHTML = button.firstElementChild.innerHTML;
 
+            var specialBool = false;
+
             if (card.parentElement.id != 'project0') { 
                 projectBody.querySelector('video').src = `videos/${card.querySelector('video').src.split('/').at(-1)}`;
+                projectBody.querySelector('img').src = `images/${card.querySelector('img').src.split('/').at(-1)}`;
                 if (projectBody.firstElementChild.nodeName.toLowerCase() != 'video') {
-                    projectBody.querySelector('video').style.display = 'inline';
                     document.querySelector('#specialtext').remove();
                 }
             } else if (projectBody.firstElementChild.nodeName.toLowerCase() == 'video') {
@@ -81,20 +93,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 specialtext.setAttribute('id', 'specialtext');
                 projectBody.insertBefore(specialtext, projectBody.firstChild);
                 projectBody.querySelector('video').style.display = 'none';
+                specialBool = true;
+            } else {
+                specialBool = true;
             }
 
             projectBody.querySelector('p').innerHTML = card.querySelector('.projectdescription').innerHTML;
 
-            PageSetup(button, card);
+            console.log(specialBool);
+
+            PageSetup(button, specialBool);
         })
     })
 });
 
-function PageSetup(button, card) {
+function PageSetup(button, specialBool) {
     // Deloads anything that might make it look buggy to start the lazy loading process
     projectpage.querySelector('video').style.display = 'none';
     projectpage.querySelectorAll('button').forEach(b => b.style.display = 'none');
-    projectpage.querySelector('img').style.display = 'initial';
+    if (!specialBool) {
+        projectpage.querySelector('img').style.display = 'initial';
+    } else {
+        projectpage.querySelector('img').style.display = 'none';
+    }
 
     // Replaces the main page with the specified project
     mainpage.style.display = 'none';
