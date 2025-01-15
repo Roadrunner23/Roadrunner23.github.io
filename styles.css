@@ -232,7 +232,7 @@ video {
     background: linear-gradient(to bottom, rgb(110, 110, 110), rgb(150, 150, 150));
 }
 
-.pause:active {
+.pause:hover {
     background: linear-gradient(to bottom, rgb(80, 80, 80), rgb(120, 120, 120));
 }
 
@@ -242,7 +242,7 @@ video {
     border-bottom-right-radius: 20px;
 }
 
-.reset:active {
+.reset:hover {
     background: linear-gradient(to bottom, rgb(100, 100, 100), rgb(140, 140, 140));
 }
 
