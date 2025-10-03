@@ -1,171 +1,237 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Creates cards for the Carousel
+    // Gets corrosponding JSON data for each file
+    await fetch('projects.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();  
+    })
+    .then(data => {
+        const carousel = document.querySelector('#Carousel');
+        for (let i = 0; i < Object.keys(data).length; i++) {
+            // Create card
+            let card = document.createElement('div');
+            card.classList.add('card');
 
-    window.mainpage = document.querySelector('#mainpage');
+            // Set elements in card
+            let name = document.createElement('h3');
+            name.innerHTML = data[i].name;
 
-    window.projectpage = document.querySelector('#projectpage');
+            let image = document.createElement('img');
+            image.src = `images/${data[i].src}.jpg`;
+            image.setAttribute("data-vsrc", `videos/${data[i].vsrc}.mp4`);
 
-    window.onresize = () => {
-        if (projectpage.style.display == 'inline') {
-            const video = projectpage.querySelector('video');
-            const buttons = projectpage.querySelectorAll('button');
-            buttons.forEach(b => {;
-                b.style.width = `${video.offsetWidth}px`;
-            });
+            let description = document.createElement('p');
+            description.innerHTML = data[i].descShort;
+            description.setAttribute("data-long", data[i].descLong)
+
+            let button = document.createElement('button');
+            button.textContent = 'View More';
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-controls", "description");
+
+            // Put it all together
+            card.append(name, image, description, button);
+            carousel.appendChild(card);
+        }
+    })  
+    .catch(error => console.error('Failed to fetch data:', error));
+
+    // Gathers elements
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const buttons = document.querySelectorAll('button');
+    const description = document.querySelector('#description');
+
+    // helper function for resizing cards
+    function fitCards() {
+        maxCard = 0;
+        cards.forEach(card => {
+            card.style.height = "auto";
+            maxCard = Math.max(maxCard, card.getBoundingClientRect().height);
+        });
+        cards.forEach(card => {
+            card.style.height = `${maxCard}px`;
+        });
+    }
+
+    // Helper function for resizing description image/video
+    function fitImg() {
+        let w = description.querySelector('img').naturalWidth;
+        let h = description.querySelector('img').naturalHeight;
+
+        if (window.innerWidth <= (w/h) * 600) {
+            document.querySelector('#project').style.flexDirection = "column";
+            description.querySelector('img').style.maxWidth = "90%";
+            description.querySelector('video').style.maxWidth = "90%";
+        } else {
+            document.querySelector('#project').style.flexDirection = "row";
+            description.querySelector('img').style.maxWidth = "50%";
+            description.querySelector('video').style.maxWidth = "50%";
         }
     }
 
-    // Sets up the images and videos to dynamically load depending on device power
-    document.querySelectorAll('.vidholder').forEach((holder) => {
-        const img = holder.querySelector('img');
-        const video = holder.querySelector('video');
-        const buttons = holder.querySelectorAll('button');
+    window.addEventListener("load", fitCards)
+    
+    const observer = new ResizeObserver(() => {
+        fitCards();
+        fitImg();
+    });
 
-        video.style.display = 'none';
-        buttons.forEach(b => b.style.display = 'none');
+    cards.forEach(card => observer.observe(card));
 
-        video.onloadeddata = () => {
-            img.style.display = 'none';
-            video.style.display = 'initial';
-            buttons.forEach(b => {
-                b.style.display = 'initial';
-                if (projectpage.style.display == 'inline') {
-                    b.style.width = `${video.offsetWidth}px`;
-                }
-            });
-        };
+
+    // Disable all buttons
+    function disableButtons() {
+        buttons.forEach(btn => btn.disabled = true);
+    }
+
+    // Enable all buttons
+    function enableButtons() {
+        buttons.forEach(btn => btn.disabled = false);
+    }
+
+    // When collapse starts animating (opening or closing)
+    description.addEventListener('show.bs.collapse', disableButtons);
+    description.addEventListener('hide.bs.collapse', disableButtons);
+
+    // When collapse finishes animating (fully opened or closed)
+    description.addEventListener('shown.bs.collapse', enableButtons);
+    description.addEventListener('hidden.bs.collapse', enableButtons);
+
+    const bsCollapse = new bootstrap.Collapse(description, {
+        toggle: false
     })
 
-    // Sets up the return anchor
-    const goBack = document.querySelector('#return');
-    goBack.addEventListener('click', () => {
+    currentButton = null;
+    
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
 
-        document.body.scrollTop = 0;
+            let open = description.classList.contains('show');
 
-        const desc = document.querySelector('.description');
-        desc.firstElementChild.style.display = 'block';
+            let img = description.querySelector('img')
 
-        desc.style.backgroundColor = 'cadetblue';
-        desc.style.border = '10px double rgb(42, 69, 70)';
-
-        goBack.style.display = 'none';
-
-        document.querySelectorAll('.collapse').forEach((card) => {
-            collapseButton = card.parentElement.firstElementChild;
-            if (collapseButton.getAttribute('aria-expanded') == 'true') {
-                collapseButton.click()
-            }
-        })
-
-        mainpage.style.display = 'inline';
-        projectpage.style.display = 'none';
-    })
-
-    // Sets up the bootstrap accordions under the "Projects" heading of index.
-    ProjectAnimationSetup();
-
-    document.querySelectorAll('.projectlink').forEach((a) => {
-        a.addEventListener('click', () => {
-            
-            document.body.scrollTop = 0;
-
-            const card = a.parentElement;
-            const button = a.parentElement.parentElement.parentElement.firstElementChild;
-
-            const projectTitle = projectpage.firstElementChild;
-            const projectBody = projectpage.lastElementChild;
-
-            projectTitle.style.backgroundColor = button.style.backgroundColor;
-            projectBody.style.backgroundColor = card.style.backgroundColor;
-
-            projectTitle.firstElementChild.innerHTML = button.firstElementChild.innerHTML;
-
-            var specialBool = false;
-
-            if (card.parentElement.id != 'project0') { 
-                projectBody.querySelector('video').src = `videos/${card.querySelector('video').src.split('/').at(-1)}`;
-                projectBody.querySelector('img').src = `images/${card.querySelector('img').src.split('/').at(-1)}`;
-                if (projectBody.firstElementChild.nodeName.toLowerCase() != 'video') {
-                    document.querySelector('#specialtext').remove();
-                }
-            } else if (projectBody.firstElementChild.nodeName.toLowerCase() == 'video') {
-                const specialtext = document.createElement('h3');
-                specialtext.innerHTML = "You're lookin' at it!";
-                specialtext.setAttribute('id', 'specialtext');
-                projectBody.insertBefore(specialtext, projectBody.firstChild);
-                projectBody.querySelector('video').style.display = 'none';
-                specialBool = true;
+            if (open && currentButton === button) {
+                bsCollapse.hide();
+                currentButton = null;
+                return;
+            } else if (open) {
+                currentButton = button;
+                bsCollapse.hide()
+                description.addEventListener('hidden.bs.collapse', () => {
+                    switcheroo(button);
+                    img.addEventListener("load", () => {
+                        fitImg();
+                        bsCollapse.show();
+                    }, { once: true });
+                }, { once: true });
             } else {
-                specialBool = true;
+                currentButton = button;
+                switcheroo(button);
+                img.addEventListener("load", () => {
+                    fitImg();
+                    bsCollapse.show();
+                }, { once: true });
             }
-
-            projectBody.querySelector('p').innerHTML = card.querySelector('.projectdescription').innerHTML;
-
-            console.log(specialBool);
-
-            PageSetup(button, specialBool);
-        })
+        });
     })
-});
 
-function PageSetup(button, specialBool) {
-    // Deloads anything that might make it look buggy to start the lazy loading process
-    projectpage.querySelector('video').style.display = 'none';
-    projectpage.querySelectorAll('button').forEach(b => b.style.display = 'none');
-    if (!specialBool) {
-        projectpage.querySelector('img').style.display = 'initial';
-    } else {
-        projectpage.querySelector('img').style.display = 'none';
+    // Helper function for previous function
+    function switcheroo(button) {
+        description.querySelector('h2').innerHTML = button.parentElement.querySelector('h3').innerHTML;
+        description.querySelector('p').innerHTML = button.parentElement.querySelector('p').getAttribute("data-long");
+
+        const img = description.querySelector('img');
+        const video = description.querySelector('video');
+
+        video.style.display = "none";
+        video.pause();
+        video.removeAttribute("src");
+        img.style.display = "block";
+
+        img.src = button.parentElement.querySelector('img').src;
+        video.src = button.parentElement.querySelector('img').getAttribute('data-vsrc');
+        video.preload = "auto";
+
+        video.addEventListener("canplaythrough", () => {
+            img.style.display = "none";
+            video.style.display = "block";
+            video.play(); 
+        }, { once: true });
+
+        video.load();
     }
 
-    // Replaces the main page with the specified project
-    mainpage.style.display = 'none';
-    projectpage.style.display = 'inline';
+    // Store initial positions of each card
+    const positions = cards.map((card, i) => i * 5);
+    let running = true;
+    let lastTime = performance.now();
 
-    const desc = document.querySelector('.description');
-    desc.firstElementChild.style.display = 'none';
-
-    desc.style.backgroundColor = 'rgb(50,50,50)';
-    desc.style.border = '10px double dodgerblue';
-
-    const goBack = document.querySelector('#return');
-    goBack.style.display = 'block';
-
-    var name = button.firstElementChild.innerHTML;
-    if (name.slice(0, 3) == '<u>') {
-        name = name.slice(3, -4);
+    // Helper function to reset cards while resizing
+    function resetPositions() {
+        let leftMost = Math.min(...positions);
+        cards.forEach((card, i) => {
+            positions[i] = (i * 5) + leftMost;
+            card.style.transform = `translateX(${positions[i]}px)`;
+        });
     }
-}
 
-function ProjectAnimationSetup() {
-    document.querySelectorAll('button').forEach((button) => {
-        if (button.className != 'pause' && button.className != 'reset') {
-            button.addEventListener('click', () => {
-                if (button.getAttribute('aria-expanded') == 'true') {
-                    button.style.animationDuration = '0.01s';
-                    button.classList.remove('radiusout');
-                    button.classList.add('radiusin');
-                } else {
-                    button.style.animationDuration = '2s';
-                    button.classList.remove('radiusin');
-                    button.classList.add('radiusout');
+    // Helper function to shove cards to the back of the line
+    function sendRight(card, i) {
+        let rightMost = Math.max(...cards.map(c => c.getBoundingClientRect().right));
+            // Move this card just after the rightmost one
+        positions[i] += 15 + rightMost - card.getBoundingClientRect().left;
+    }
+
+    window.addEventListener("resize", resetPositions);
+
+    function move() {
+
+        if (!running) {
+            requestAnimationFrame(move);
+            return;
+        }
+
+        let tempPos = []
+        cards.forEach((card, i) => {
+            let currentPos = card.getBoundingClientRect().left;
+            tempPos.forEach(pos => {
+                if (pos - 10 < currentPos && currentPos < pos + 10) {
+                    sendRight(card, i);
                 }
             })
-        } else {
-            if (button.className == 'pause') {
-                const video = button.parentElement.querySelector('video');
-                button.addEventListener('click', () => {
-                    if (video.paused) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                })
-            } else {
-                const video = button.parentElement.querySelector('video');
-                button.addEventListener('click', () => {
-                    video.currentTime = 0;
-                })
+            tempPos.push(currentPos);
+        }) 
+
+        let now = performance.now();
+        const delta = (now - lastTime) / 1000;
+        lastTime = now;
+        cards.forEach((card, i) => {
+            // Move each card left
+            positions[i] -= (window.innerWidth / 12) * delta; // adjust speed here
+            card.style.transform = `translateX(${positions[i]}px)`;
+
+            // If card is completely offscreen to the left
+            const cardRight = card.getBoundingClientRect().right;
+            if (cardRight < -5) {
+                // Find the rightmost card
+                sendRight(card, i);
             }
+        });
+
+        requestAnimationFrame(move);
+    }
+
+    move();
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            running = false;
+        } else {
+            running = true;
+            lastTime = performance.now(); // reset so delta doesn't explode
         }
-    })
-}
+    });
+});

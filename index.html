@@ -9,210 +9,58 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Roadrunner23 Portfolio</title>
     </head>
+
     <body>
-
-    
-        <div class="header1">
+        <div>
             <h1>Andrea DeSantis</h1>
-            <h1 id="headershadow">Andrea DeSantis</h1>
         </div>
-
-        <div id="projectpage" style="display:none;">
-            <div class="header2" style="border-color:black;">
-                <h2 id="projectname"></h2>
-            </div>
-            <div class="header2 vidholder" style="border-color:black;">
-                <video type="video/mp4" playsinline autoplay muted loop preload="auto"></video>
-                <img src="" alt="Placeholder Image">
-                <button class="pause">Pause</button>
-                <button class="reset">Reset</button>
-                <p style="color:rgba(255, 255, 255); text-shadow: 3px 3px 3px black"></p>
-            </div>
-        </div>
-
-        <div class="description"> 
-            <p>Hi, welcome to my website! On Github, I go by the username Roadrunner23. 
-                Below you can find personal projects I have worked on in the past,
-                prior experience, and my contact information.
-            </p>
-            <a id="return" style="display:none;">Go Back</a>
-        </div>
-
-
-        <div id="mainpage">
-            <div class="header2">
-                <h2 style="text-shadow: 2px 2px 3px rgb(34, 11, 55)">
-                    Projects
+        <div>
+            <div>
+                <h2>About Me
+                    <img src="images/self.jpg" alt="Profile Picture" id="titleimg">
                 </h2>
-                <p>These are the projects I'm most proud to have made. Original projects made <i>100%</i> from scratch by me are <u>underlined</u>.
-                The rest are assignments from courses as described in the <i>Experience</i> section. These assignments typically had some of the easy or tedious
-                work already done, however the majority of the work was still done by me. Click them to learn more. <i>Some videos may be sped up to 1.5x their original speed for convenience.</i></p>
-                <div class="content">
-                    <div class="columnleft">
-                        <div>
-                            <button style="background-color:rgb(0, 172, 0);" type="button" data-bs-toggle="collapse" data-bs-target="#project1" aria-expanded="false" aria-controls="project1">
-                                <h3><u>Keyterpreter</u></h3>
-                            </button>
-                            <div class="collapse" id="project1">
-                                <div class="card card-body" style="background-color:rgb(0, 88, 0);">
-                                    <div class="vidholder">
-                                        <img src="images/KeyterpreterFrameCopy.jpg" alt="Project Image">
-                                        <video src="videos/KeyterpreterCopy.mp4" type="video/mp4" playsinline autoplay muted loop preload="auto"></video>
-                                        <button class="pause">Pause</button>
-                                        <button class="reset">Reset</button>
-                                    </div>
-                                    <p>
-                                        A MIDI player/viewer, as well as a music theory visualizer that can also interpret between piano and guitar.
-                                    </p>
-                                    <p class="projectdescription">
-                                        The final project of a web design course. The requirement was basically to use at least one thing learned from every week of the lessons. I knew I wanted to do something music related, 
-                                        and none of the ideas I had could use EVERYTHING I needed to meet the minimum complecity the course required. <i style="color:white;">So I decided to do them all. </i>I created the Django project from scratch, setting up the framework for everything. 
-                                        This also includes admin access. I also used a JavaScript library to be able to read and play MIDI files. Once it was all set up, everything was based off of that. On the main page, there is a keyboard and what's supposed to be a sideways guitar. 
-                                        clicking a note on either one will play create the MIDI file for that note and play it. Above the "instruments" are modifiers that give the option to display colour coded intervals in relation to the tonic, or selected note. 
-                                        This can help someone new to music theory to visualize the relationships between notes in a key as well as how chords work. All versions of the corrosponding notes as well as all octaves if the toggle is on, are shown on the other instrument. 
-                                        This can help with transcribing music from keyboard to guitar and vice-versa. Log in, and you get access to the other page. There, you can upload MIDI files and save them under your account on the site. With the songs saved, you can then play them. 
-                                        While a song is being played, the MIDI information is being fed into the keyboard or guitar, whichever instrument is on screen, and being shown via marked notes. And for guitar it doesn't show all version of the notes, it picks the closest ones.
-                                    </p>
-                                    <a class="projectlink">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button style="background-color:cornflowerblue;" type="button" data-bs-toggle="collapse" data-bs-target="#project3" aria-expanded="false" aria-controls="project3">
-                                <h3>Minesweeper AI</h3>
-                            </button>
-                            <div class="collapse" id="project3">
-                                <div class="card card-body" style="background-color:rgb(38, 69, 126);">
-                                    <div class="vidholder">
-                                        <img src="images/MinesweeperFrameCopy.jpg" alt="Project Image">
-                                        <video src="videos/MinesweeperCopy.mp4" type="video/mp4" playsinline autoplay muted loop></video>
-                                        <button class="pause">Pause</button>
-                                        <button class="reset">Reset</button>
-                                    </div>
-                                    <p>
-                                        It can play Minesweeper.
-                                    </p>
-                                    <p class="projectdescription">
-                                        There isn't much to this, and honestly, I added it just to fill out the space on this website. Aside from the ones already listed, this is my most impressive project of the rest of them. 
-                                        The course provided the game, being Minesweeper, and I had to create a bot to play it. It saves all the knowledge it has from its attempts and will use that knowledge to infer what spaces are safe, which are bombs, and which are unknown. 
-                                        It then picks a safe option if available, or if it comes to it, whatever it knows is not a bomb. This is all about managing knowledge and constantly updating it with new inferences.
-                                    </p>
-                                    <a class="projectlink">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="columnright">
-                        <div>
-                            <button id="topright" style="background-color:orange;" type="button" data-bs-toggle="collapse" data-bs-target="#project2" aria-expanded="false" aria-controls="project2">
-                                <h3><u>3D Renderer</u></h3>
-                            </button>
-                            <div class="collapse" id="project2">
-                                <div class="card card-body" style="background-color:rgb(165, 88, 0);">
-                                    <div class="vidholder">
-                                        <img src="images/3DEngineFrameCopy.jpg" alt="Project Image">
-                                        <video src="videos/3DEngineCopy.mp4" type="video/mp4" playsinline autoplay muted loop></video>
-                                        <button class="pause">Pause</button>
-                                        <button class="reset">Reset</button>
-                                    </div>
-                                    <p>
-                                        This is a 3D model viewer built 100% from scratch in Python.
-                                    </p>
-                                    <p class="projectdescription">
-                                        This was the final project for one of the courses I took. The task was to create something of significant complexity using the skills learned throughout the course. 
-                                        As someone whose favorite hobbies include animation and video games, I thought this was a great way to show my skill while making an original application that combined both of those interests. 
-                                        To accomplish this, I learned more about the fundamentals of 3D renderers and the math behind them. I also learned how to use Python's Tkinter GUI to display the model. 
-                                        This is my favourite thing I have created yet, it was very fun to utililze everything I knew at the point learn so much more on top of that, such as matrix multiplication.
-                                    </p>
-                                    <a class="projectlink">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button style="background-color:indianred;" type="button" data-bs-toggle="collapse" data-bs-target="#project4" aria-expanded="false" aria-controls="project4">
-                                <h3>Email</h3>
-                            </button>
-                            <div class="collapse" id="project4">
-                                <div class="card card-body" style="background-color:rgb(119, 37, 37);">
-                                    <div class="vidholder">
-                                        <img src="images/EmailFrameCopy.jpg" alt="Project Image">
-                                        <video src="videos/EmailCopy.mp4" type="video/mp4" playsinline autoplay muted loop></video>
-                                        <button class="pause">Pause</button>
-                                        <button class="reset">Reset</button>
-                                    </div>
-                                    <p>
-                                        As part of one of my courses, I was tasked with creating a web application that emulated the function of an email service.
-                                    </p>
-                                    <p class="projectdescription">
-                                        This was given to me with only the basic Django framework done and a list of functions I needed to implement. 
-                                        First I gave the user the ability to log into their email account. Then I added all the functionality of the emails, including the ability to view them, send them, and recieve them. 
-                                        I also made it so the user can edit their own emails. They can also reply and forward emails, and can send them to multiple recipients at once. 
-                                        The recipients, when viewing an email, will be able to see which ones have been viewed or not. And they will also be able to archive emails and view them archived as well.
-                                    </p>
-                                    <a class="projectlink">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="background-color:rebeccapurple;">
-                    <button style="background-color:cadetblue;" type="button" data-bs-toggle="collapse" data-bs-target="#project0" aria-expanded="false" aria-controls="project0">
-                        <h3><u>This Website!</u></h3>
-                    </button>
-                    <div class="collapse" id="project0">
-                        <div class="card card-body" style="background-color: darkslategray;">
-                            <p>
-                                This website utilized every skill I've learned so far to create and polish it.
-                            </p>
-                            <p class="projectdescription">
-                                This is a single page website, using JavaScript to dynamically load pages depending on which project you click on. 
-                                In fact, JavaScript was used heavily to accomplish most of the things talked about here. 
-                                Much time and effort has been put into making it compatible with mobile devices and different web browsers. 
-                                The dynamic CSS changes sizes and other properties of elements to accomadate all screen sizes with it being fully functional and readable down to around 239 pixels.  
-                                Speaking of CSS, most of it was done by myself, including the animations, with only minor help from Bootstrap for specific things, 
-                                namely the collapsable buttons to simulate accordians or drop-down menus. It has also been optimized to the best of my 
-                                ability for lower-end devices, rendering pictures or videos for my projects at multiple levels of quality depending on the power of the device.
-                            </p>
-                            <a class="projectlink">View More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="header3">
-                <h2 style="text-shadow: 2px 2px 3px rgb(24, 40, 24);">
-                    Experience
-                </h2>
+            <div class="division">
                 <p>
+                    Hi, welcome to my website! On Github, I go by the username Roadrunner23. 
+                    Below you can find personal projects I have worked on in the past and my contact information. 
                     I've taken and passed multiple courses on computer science and web development. 
                     These include ones from HarvardX's CS50, their Introduction to Computer Science and their Web Programming with Python and JavaScript. 
-                    I am also eager to continue learning, as I am currently taking CS50's Introduction to Artificial Intelligence with Python and have been doing
-                    independent research on topics such as software development, game development, machine learning, and neural networks. 
+                    I am also eager to continue learning, as I am currently taking CS50's Introduction to Artificial Intelligence with Python 
+                    and have been doing independent research on topics such as software development, game development, machine learning, and neural networks.
                 </p>
+                <img src="images/self.jpg" alt="Profile Picture" id="divisionimg">
             </div>
         </div>
-
-
-        <div class="header4">
-            <h2 style="text-shadow: 2px 2px 3px rgb(44, 44, 25)">
-                Contact
-            </h2>
-            <div id="contact">
-                <h3 class="info" style="grid-column: 1; grid-row: 1;">
-                    Phone Number:
-                </h3>
-                <p class="info" style="grid-column: 1; grid-row: 0;">
-                    (610)-712-0651
-                </p>
-                <h3 class="info" style="grid-column: 0; grid-row: 1;">
-                    Email:
-                </h3>
-                <p class="info" style="grid-column: 0; grid-row: 0;">
-                    andread115@icloud.com
-                </p>
+        <div><div><h2>Projects</h2></div></div>
+        <div id="Carousel"></div>
+        <div class="collapse" id="description">
+            <div id="project">
+                <div id="projectContent">
+                    <h2></h2>
+                    <p></p>
+                </div>
+                <img>
+                <video playsinline muted loop style="display:none;"></video>
             </div>
-            <p>
-                References available upon request
-            </p>
         </div>
+        <div>
+            <div>
+                <h2>Contact</h2>
+            </div>
+            <div class="info">
+                <img src="svgs/mail.svg" alt="Email">
+                <h3>andread115@icloud.com</h3>
+            </div>
+            <div class="info">
+                <img src="svgs/phone.svg" alt="Email">
+                <h3>(610)-712-0651</h3>
+            </div>
+            <div class="info">
+                <img src="svgs/github.svg" alt="Email">
+                <h3>Roadrunner23</h3>
+            </div>
+        </div>
+        <p id="credits">SVG designs from: https://tablericons.com</p>
     </body>
 </html>

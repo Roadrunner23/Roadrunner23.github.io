@@ -1,0 +1,37 @@
+{
+    "0": {
+        "name":"This Website",
+        "src":"oldSite",
+        "vsrc":"SiteCopy",
+        "descShort":"This is the second iteration of my portfolio site, updated to a much cleaner look and feel. Pictured is the original version.",
+        "descLong":"What you're currently looking at is the 2nd version of my portfolio. Pictured is what it used to look like. Most of the following was implemented in the original version albeit with much less polish. This is a single page website, using JavaScript to dynamically load content depending on which project you click on. Much time and effort has been put into making it compatible with mobile devices and different web browsers. The dynamic CSS changes sizes and other properties of elements to accomadate all screen sizes with it being fully functional and readable down to around 200 pixels.  Speaking of CSS, most of it was done by myself, including the animations, with only minor help from Bootstrap for specific things, namely the collapsable section. It has also been optimized to the best of my ability for lower-end devices, utilizing lazy loading to render pictures or videos for my projects at multiple levels of quality depending on the power of the device."
+    },
+    "1": {
+        "name":"Keyterpreter",
+        "src":"KeyterpreterFrameCopy",
+        "vsrc":"KeyterpreterCopy",
+        "descShort":"A 3-in-1 MIDI player/viewer, music theory visualizer, an piano/guitar interpreter.",
+        "descLong":"The final project of a web design course. The requirement was basically to use at least one thing learned from every week of the lessons. I knew I wanted to do something music related, and none of the ideas I had could use EVERYTHING I needed to meet the minimum complecity the course required. So I decided to do them all. I created the Django project from scratch, setting up the framework for everything. This also includes admin access. I also used a JavaScript library to be able to read and play MIDI files. Once it was all set up, everything was based off of that. On the main page, there is a keyboard and what's supposed to be a sideways guitar. Clicking a note on either one will play create the MIDI file for that note and play it. Above the \"instruments\" are modifiers that give the option to display colour coded intervals in relation to the tonic, or selected note. This can help someone new to music theory to visualize the relationships between notes in a key as well as how chords work. All versions of the corrosponding notes as well as all octaves if the toggle is on, are shown on the other instrument. This can help with transcribing music from keyboard to guitar and vice-versa. Log in, and you get access to the other page. There, you can upload MIDI files and save them under your account on the site. With the songs saved, you can then play them. While a song is being played, the MIDI information is being fed into the keyboard or guitar, whichever instrument is on screen, and being shown via marked notes. And for guitar it doesn't show all version of the notes, it picks the closest ones."
+    },
+    "2": {
+        "name":"Minesweeper AI",
+        "src":"MinesweeperFrameCopy",
+        "vsrc":"MinesweeperCopy",
+        "descShort":"It plays Minesweeper",
+        "descLong":"There isn't much to this, and honestly, I added it just to fill out the space on this website. Aside from the ones already listed, this is my most impressive project of the rest of them. The course provided the game, being Minesweeper, and I had to create a bot to play it. It saves all the knowledge it has from its attempts and will use that knowledge to infer what spaces are safe, which are bombs, and which are unknown. It then picks a safe option if available, or if it comes to it, whatever it knows is not a bomb. This is all about managing knowledge and constantly updating it with new inferences."
+    },
+    "3": {
+        "name":"3D Renderer",
+        "src":"3DEngineFrameCopy",
+        "vsrc":"3DEngineCopy",
+        "descShort":"3D model viewer built from scratch in Python.",
+        "descLong":" This was the final project for one of the courses I took. The task was to create something of significant complexity using the skills learned throughout the course. As someone whose favorite hobbies include animation and video games, I thought this was a great way to show my skill while making an original application that combined both of those interests. To accomplish this, I learned more about the fundamentals of 3D renderers and the math behind them. I also learned how to use Python's Tkinter GUI to display the model. This is my favourite thing I have created yet, it was very fun to utililze everything I knew at the point learn so much more on top of that, such as matrix multiplication."
+    },
+    "4": {
+        "name":"Email",
+        "src":"EmailFrameCopy",
+        "vsrc":"EmailCopy",
+        "descShort":"As part of one of my courses, I was tasked with creating a web application that emulated the function of an email service.",
+        "descLong":"This was given to me with only the basic Django framework done and a list of functions I needed to implement. First I gave the user the ability to log into their email account. Then I added all the functionality of the emails, including the ability to view them, send them, and recieve them. I also made it so the user can edit their own emails. They can also reply and forward emails, and can send them to multiple recipients at once. The recipients, when viewing an email, will be able to see which ones have been viewed or not. And they will also be able to archive emails and view them archived as well."
+    }
+}
