@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         let now = performance.now();
         const delta = (now - lastTime) / 1000;
+        document.querySelector('h1').innerHTML = delta;
         lastTime = now;
         cards.forEach((card, i) => {
             // Move each card left
