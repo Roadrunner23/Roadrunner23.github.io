@@ -16,6 +16,24 @@ div {
     padding:1vw 5vw;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--vanilla); /* move bg from * to html/body */
+  height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+/* prevent overscroll bounce where supported */
+html, body {
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 button {
     font-size: clamp(10px, 3vw, 30px);
     background-color: var(--atomicTangerine);
