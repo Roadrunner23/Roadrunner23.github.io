@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function() {
+    // Helps with IOS compatibility
+    document.addEventListener('touchstart', () => {}, true);
     // Creates cards for the Carousel
     // Gets corrosponding JSON data for each file
     await fetch('projects.json')
@@ -71,8 +73,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             description.querySelector('video').style.maxWidth = "50%";
         }
     }
-
-    window.addEventListener("load", fitCards)
     
     const observer = new ResizeObserver(() => {
         fitCards();
@@ -234,4 +234,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             lastTime = performance.now(); // reset so delta doesn't explode
         }
     });
+});
+
+window.addEventListener('load', () => {
+  fitCards();
 });
